@@ -1,12 +1,10 @@
 /*전체*/
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-                    
+
 * {
     font-family: 'Gowun Dodum', sans-serif;
     color: black;
 }
-
-
 
 /*상단*/
 .main {
@@ -52,8 +50,6 @@
     color: black;
 }
 
-
-
 /*우리들의 약속*/
 .container_team {
     background-color: white;
@@ -75,8 +71,6 @@
     line-height: 50px;
 }
 
-
-
 /*카드*/
 .container_text_center {
     height: 100vh;
@@ -96,16 +90,15 @@
     height: 375px;
     perspective: 1100px;
     margin: 20px;
-
 }
 
 .card {
     width: 100%;
     height: 100%;
     position: relative;
-    transition: .4s;
+    transition: 0.4s;
     transform-style: preserve-3d;
-    border-color:rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
     object-fit: cover;
 }
 
@@ -132,8 +125,6 @@
     transform: rotateY(180deg);
 }
 
-
-
 /*카드 앞면 이미지*/
 #img-team-k {
     background-image: url('.\\INFP.jpeg');
@@ -151,14 +142,11 @@
     background-image: url('.\\ISFP.jpg');
     background-position: center;
     background-size: cover;
-
 }
 
-
-
 /*카드 뒷면 이미지*/
-#img-back-1{
-    background-image: url('.\\');
+#img-back-1 {
+    background-image: url('.\\img.k.JPG');
     background-size: cover;
     background-position: center;
 }

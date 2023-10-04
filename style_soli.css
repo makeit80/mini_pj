@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
+
+* {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+body {
+    background-color: #111;
+}
+
+/*변경없음 */
+.main {
+    /* background-color: red; */
+    width: 1000px;
+    height: 600px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    margin: 20px auto 30px auto;
+
+    border: 1px solid coral;
+}
+
+.portrait {
+    /* background-color: #111; */
+    width: 400px;
+    height: 500px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(./img2.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(1px 3px 5px #000);
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.portrait:hover {
+    background-image: url(./img2.jpg);
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.profile_text {
+    color: whitesmoke;
+    margin-right: 50px;
+    font-size: x-large;
+}
+
+.profile_text>div {
+    margin-bottom: 30px;
+}
+
+.profile_text>div>dt {
+    color: cornflowerblue;
+}
+
+.btn_about {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.btn_about>button {
+    color: whitesmoke;
+    margin-bottom: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: large;
+    background-color: transparent;
+}
+
+.modal {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+
+
+}
+
+.charater {
+    display: none;
+    transition: 0.8s;
+    background-color: transparent;
+    color: white;
+    font-size: x-large;
+    width: 600px;
+    height: 300px;
+    margin: 0 auto 0 auto;
+    padding: 10px 20px;
+    border: 3px dotted white;
+    border-radius: 20px;
+    line-height: 1.5;
+}
+
+
+.teamwork {
+    display: none;
+    background-color: transparent;
+    color: white;
+    font-size: x-large;
+    width: 600px;
+    height: 270px;
+    margin: 0 auto 0 auto;
+    padding: 10px 20px;
+    border: 3px dotted white;
+    border-radius: 20px;
+    line-height: 1.5;
+}

@@ -1,0 +1,179 @@
+/*전체*/
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+                    
+* {
+    font-family: 'Gowun Dodum', sans-serif;
+    color: black;
+}
+
+
+
+/*상단*/
+.main {
+    height: 100vh;
+    background-image: url('.\\back_1.jpg');
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 150px;
+    padding-bottom: 150px;
+}
+
+.explain {
+    font-size: 25px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 50px;
+    letter-spacing: 4px;
+}
+
+.scroll_btn button {
+    font-weight: 600;
+    color: rgb(65, 65, 65);
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #5e5e5e;
+    font-size: 1.125em;
+    margin: 50px 20px;
+    padding: 10px 40px;
+}
+
+.scroll_btn button:hover {
+    background-color: rgb(240, 240, 240);
+    transition: all 0.5s;
+}
+
+.nav-font-color {
+    color: black;
+}
+
+
+
+/*우리들의 약속*/
+.container_team {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+#top {
+    font-size: 100px;
+    padding-bottom: 30px;
+}
+
+#bottom {
+    font-size: 20px;
+    line-height: 50px;
+}
+
+
+
+/*카드*/
+.container_text_center {
+    height: 100vh;
+    background-size: cover;
+    background-image: url('.\\back_3.jpg');
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.flip {
+    width: 300px;
+    height: 375px;
+    perspective: 1100px;
+    margin: 20px;
+
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: .4s;
+    transform-style: preserve-3d;
+    border-color:rgba(0, 0, 0, 0);
+    object-fit: cover;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding-left: 25px;
+}
+
+.front {
+    background-position: center;
+    background-size: cover;
+}
+
+.back {
+    background: rgb(207, 207, 207);
+    transform: rotateY(180deg);
+}
+
+.flip:hover .card {
+    transform: rotateY(180deg);
+}
+
+
+
+/*카드 앞면 이미지*/
+#img-team-k {
+    background-image: url('.\\INFP.jpeg');
+}
+
+#img-team-p {
+    background-image: url('.\\INFJ.png');
+}
+
+#img-team-l {
+    background-image: url('.\\ISTJ.jpg');
+}
+
+#img-team-c {
+    background-image: url('.\\ISFP.jpg');
+    background-position: center;
+    background-size: cover;
+
+}
+
+
+
+/*카드 뒷면 이미지*/
+#img-back-1{
+    background-image: url('.\\');
+    background-size: cover;
+    background-position: center;
+}
+#img-back-2 {
+    background-image: url('.\\_MG_9017.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#img-back-3 {
+    background-image: url('.\\img_ll.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#img-back-4 {
+    background-image: url('.\\img_c.jpeg');
+    background-size: cover;
+    background-position: center;
+}

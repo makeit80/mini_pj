@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8조 아이들</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body> 
+  <!--상단-->
+  <div class="main">
+      <div class="title">8조 아이들</div>
+      <p class="explain">TEAM아이들은 MBTI에서 “I”특성을 가진 팀원들로 이루어진 팀입니다.<br>
+        업무스타일은 다소 조용한 편이지만 각자의 아이디어와 역량을 조용하게 펼치며,<br>
+        개발자로서 문제 해결 능력을 발휘하여 성장해 나가고자 합니다.</p>
+      <div class="scroll_btn">
+        <button id="button1">우리들의 약속</button>
+        <button id="button2">팀원 소개</button>
+      </div>
+  </div>
+
+
+
+  <!--우리들의 약속-->
+  <section class="container_team" id="section1">
+    <p id="top">우리팀의 약속</p>
+    <p id="bottom">
+    1. 약속 시간 늦지 않기<br>
+    2. 결석 시 하루 전 미리 알려주기<br>
+    3. I 지만 참지 않고 말하기<br>
+    </p>
+  </section>
+  </div>
+
+
+
+  <!--카드-->
+  <div class="container_text_center" id="section2">
+    <div class="wrapper">
+      <div class="flip">
+        <div class="card">
+          <!-- 앞면 -->
+          <div id="img-team-k" class="front">
+          </div>
+          <!-- 뒷면 -->
+          <div class="back" id="img-back-1" onclick="location.href=''">
+            <p class="fs-3 mt-4">김현철</p>
+            <p class="fs-5 text-start px-4">INFP</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip">
+        <div class="card">
+          <!-- 앞면 -->
+          <div id="img-team-p" class="front"></div>
+          <!-- 뒷면 -->
+          <div class="back" id="img-back-2" onclick="location.href='team_l.html'">
+            <p class="fs-3 mt-4">박솔이</p>
+            <p class="fs-5 text-start px-4">INFJ</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip">
+        <div class="card">
+          <!-- 앞면 -->
+          <div id="img-team-l" class="front"></div>
+          <!-- 뒷면 -->
+          <div class="back" id="img-back-3" onclick="location.href='team_l.html'">
+            이경욱
+            ISTJ
+          </div>
+        </div>
+      </div>
+      <div class="flip">
+        <div class="card">
+            <!-- 앞면 -->
+            <div id="img-team-c" class="front"></div>
+            <!-- 뒷면 -->
+            <div class="back" id="img-back-4" onclick="location.href=''">
+                <p class="fs-3 mt-4">천영륜</p>
+                <p class="fs-5 text-start px-4">ISFP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<!--스크롤 버튼-->
+<script>
+  const button1 = document.getElementById('button1');
+  const section1 = document.getElementById('section1');
+  button1.addEventListener('click', () => {
+    window.scrollBy({top: section1.getBoundingClientRect().top, behavior: 'smooth'});
+  });
+
+  const button2 = document.getElementById('button2');
+  const section2 = document.getElementById('section2');
+  button2.addEventListener('click', () => {
+    window.scrollBy({top: section2.getBoundingClientRect().top, behavior: 'smooth'});
+  });
+</script>
+
+</html>

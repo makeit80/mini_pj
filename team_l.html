@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /*전체*/
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: rgb(236, 236, 236);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .container {
+        display: grid;
+        grid-template-rows: repeat(1, minmax(100px, auto));
+        grid-template-columns: 1.5fr 1fr;
+        grid-auto-rows: 200px;
+        gap: 20px;
+    }
+    .item {
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+
+    }
+    /*상단 소개페이지*/
+    .item:nth-child(1) {
+        grid-row: 1 /3;
+        grid-column: 1 / 3;
+        text-align: center;
+        padding-top: 110px;
+        font-size: 60px;
+        font-weight: 600;
+    }  
+
+    
+    /*이미지*/
+    .item:nth-child(3) {
+        grid-row: 3 / 6;
+        grid-column: 2 / 3;
+        object-fit: cover;
+
+    }
+    /*첫 번째 박스*/
+    .item:nth-child(2) {
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    #ex1 {
+        font-size: 15px;
+        font-weight: 100;
+    }
+
+    /*두 번째 박스*/
+    .item:nth-child(4) {
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    #ex2 {
+        font-size: 15px;
+        font-weight: 100;
+    }
+
+    /*세 번째 박스*/
+    .item:nth-child(5) {
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    #ex3 {
+        font-size: 15px;
+        font-weight: 100;
+    }
+
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="item">팀원 소개 페이지</div>
+        <div class="item">1. 자신에 대한 설명 및 MBTI<br><br>
+            <span id="ex1">
+            안녕하세요.
+            저는 미술을하다가 코딩에 흥미가 있어 이번 내일배움캠프에 지원하게 된 이경욱이라고 합니다.<br>
+            MBTI는 ISTJ이고, 계획세우는걸 좋아해요<br>
+            잘 부탁드립니다!!
+            </span>
+        </div>
+        <img class="item" src=".\\img_l2.jpg" width="100%" height="100%">
+        <div class="item">2. 객관적으로 살펴본 자신의 장점<br><br>
+            <span id="ex2">
+            무던한 편이어서 감정 기복이 적고<br>
+            내향적인 편이라 제 이야기를 하기보단 들어주는 걸 더 잘해요<br>
+            </span>
+        </div>
+        <div class="item">3. 자신의 스타일 협업 스타일 소개<br><br>
+            <span id="ex3">
+            앞에 나서서 이끌기보다 업무 진행과정에 맞춰<br>
+            필요한 사항을 제시하고 정리하는 서포트 역할을 선호해요<br>
+            </span>
+        </div>
+
+
+    </div>
+</body>
+</html>

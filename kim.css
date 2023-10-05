@@ -124,20 +124,24 @@ table {
     border-spacing: 0;
 }
 
+/* 공통 */
 * {
     font-family: 'Gowun Dodum', sans-serif;
 }
-
+.hide,
+.hide * {
+    position: absolute;
+    display: none;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
 body {
     background-color: #abc1d1;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-.flexBox {
-    display: flex;
 }
 
 /* 헤더 */
@@ -148,17 +152,7 @@ header {
     background-color: #abc1d1;
     z-index: 2;
 }
-.hide {
-    position: absolute;
-    display: none;
-    width: 0px;
-    height: 0px;
-    overflow: hidden;
-}
 
-main {
-    min-height: calc(100vh - 205px);
-}
 /* 드롭다운 */
 .dropDownBox {
     background-color: white;
@@ -183,6 +177,11 @@ main {
 }
 
 /* 채팅 */
+
+main {
+    min-height: calc(100vh - 205px);
+}
+
 .warning {
     background-color: #80808032;
     padding: 20px;
@@ -239,4 +238,20 @@ main {
 }
 .massage.own .messageInfo {
     flex-direction: row-reverse;
+}
+
+/* 애니메이션 */
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.massage div {
+    animation: fadein 0.5s linear;
 }

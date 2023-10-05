@@ -130,6 +130,10 @@ table {
 
 body {
     background-color: #abc1d1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .flexBox {
@@ -180,7 +184,7 @@ main {
 
 /* 채팅 */
 .warning {
-    background-color: rgba(128, 128, 128, 0.195);
+    background-color: #80808032;
     padding: 20px;
     text-align: center;
     line-height: 120%;

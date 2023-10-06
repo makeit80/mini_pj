@@ -15,7 +15,6 @@ function onClickMain() {
         removeClickMain();
     }
     children[counte].classList.remove('hide');
-    console.log(children[counte]);
     counte++;
 }
 main.addEventListener('click', onClickMain);

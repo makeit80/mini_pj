@@ -199,7 +199,7 @@ main {
 .profileImg {
     width: 55px;
     height: 55px;
-    background-image: url('/img.k.JPG');
+    background-image: url('./img.k.JPG');
     background-position: center center;
     background-size: cover;
     border-radius: 40%;

@@ -18,6 +18,7 @@ body,
   background-size: cover;
   background-attachment: fixed;
   color: darkred;
+  margin: 0;
 }
 
 .main-nav {
@@ -188,7 +189,7 @@ a {
   width: 1050px;
   margin: auto;
   border-radius: 15px;
-  
+
 }
 
 .send-box {
@@ -247,7 +248,51 @@ a {
   line-height: 50px;
 }
 
-.userinfo{
-  height: 50px; 
+.userinfo {
+  height: 50px;
   display: flex;
+}
+
+footer {
+  background-color: darkred;
+  height: 350px;
+}
+
+.footer-container {
+  height: 100%;
+  width: 1200px;
+  margin: auto;
+}
+
+.banner {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.banner-img-box,
+.banner-ingfo-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-img {
+  width: 500px;
+}
+
+.banner-ingfo-box{
+  color: white;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text1, .text2 {
+  margin: 0;
+}
+
+.text2 {
+  font-size: 30px;
 }

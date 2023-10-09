@@ -8,19 +8,79 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="style_c.css" />
-
 </head>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+  };
+
+  $("#postingbtn").click(async function () {
+    let name = $('#name').val();
+    let input = $('#input').val();
+
+    let doc = {
+      'name': name,
+      'input': input,
+      'timestamp': Date.now()
+    };
+
+    await addDoc(collection(db, "comments"), doc);
+    alert('글올리기 완료!');
+    window.location.reload();
+  })
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  let comments = [];
+
+  let datas = await getDocs(collection(db, "comments"));
+
+  datas.forEach((data) => {
+    comments.push(data.data());
+  });
+
+
+  comments.sort((a, b) => {
+    return b.timestamp - a.timestamp;
+  });
+
+  comments.forEach((comment) => {
+    const element = `
+            <div class="comment">
+              <div class="userinfo">
+                <div class="emoji6">
+                  <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="name">${comment.name}</div>
+              </div>
+              <div class="chat">${comment.input}</div>
+              <div class="date-box">
+              <div clas="date">${new Date(comment.timestamp).toLocaleString('ko-KR', { hour12: false, year: "numeric", month: "numeric", day: "numeric", hour: '2-digit', minute: "numeric" })}</div>
+              </div>
+              <div class="like">♥</div>
+            </div>
+            `
+    $("#comment-box").append(element)
+  })
+
+</script>
+
 <body>
+  <header class="main-nav">
+    <div class="nav-item"><a href="../index.html">A-03조</a></div>
+    <div class="nav-item"><a href="../kim.html">김현철</a></div>
+    <div class="nav-item"><a href="../index_soli.html">박솔이</a></div>
+    <div class="nav-item"><a href="../team_l.html">이경욱</a></div>
+    <div class="nav-item"><a href="#">천영륜</a></div>
+  </header>
   <div class="main-container">
     <div class="main" id="back">
-      <header class="main-nav">
-        <div class="nav-item"><a href="../index.html">A-03조</a></div>
-        <div class="nav-item"><a href="../kim.html">김현철</a></div>
-        <div class="nav-item"><a href="../index_soli.html">박솔이</a></div>
-        <div class="nav-item"><a href="../team_l.html">이경욱</a></div>
-        <div class="nav-item"><a href="#">천영륜</a></div>
-      </header>
       <div class="sub-container">
         <div class="sub-container-left">
           <div class="box">
@@ -122,8 +182,8 @@
       </div>
       <div class="container-bottom">
         <div class="guestbook-box">
-          <div class="gb-box">
-            <div class="comment">
+          <div id="comment-box" class="gb-box">
+            <!-- <div class="comment">
               <div class="userinfo">
                 <div class="emoji6">
                   <i class="bi bi-person-circle"></i>
@@ -131,15 +191,19 @@
                 <div class="name">name</div>
               </div>
               <div class="chat">방명록 작성 test</div>
+              <div class="datebox">
+              <div clas="date"> </div>
+              </div>
               <div class="like">♥</div>
-            </div>
+            </div> -->
           </div>
           <div class="send-box">
             <div class="emoji6">
               <i class="bi bi-person-circle"></i>
             </div>
-            <input class="input-box" />
-            <button class="send-button">작성하기</button>
+            <input id="name" class="input-name" type="text" placeholder="이름" />
+            <input id="input" class="input-box" type="text" placeholder="여기에 적으세요." />
+            <button id="postingbtn" type="button" class="send-button">작성하기</button>
           </div>
         </div>
       </div>

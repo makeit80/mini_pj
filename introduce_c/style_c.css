@@ -26,12 +26,13 @@ body,
   flex-direction: row;
   justify-content: center;
   position: sticky;
-  bottom: 0;
+  top: 0;
+  background-color: darkred;
 }
 
 a {
   text-decoration: none;
-  color: darkred;
+  color: white;
 }
 
 .nav-item {
@@ -189,7 +190,6 @@ a {
   width: 1050px;
   margin: auto;
   border-radius: 15px;
-
 }
 
 .send-box {
@@ -220,8 +220,16 @@ a {
   width: 50px;
 }
 
+.input-name {
+width: 100px;
+background-color: inherit;
+border: 0;
+font-size: 25px;
+padding-left: 20px;
+}
+
 .input-box {
-  width: 850px;
+  width: 800px;
   background-color: inherit;
   border: 0;
   font-size: 25px;
@@ -244,7 +252,7 @@ a {
 
 .chat {
   font-size: 25px;
-  width: 800px;
+  width: 730px;
   line-height: 50px;
 }
 
@@ -272,7 +280,8 @@ footer {
 }
 
 .banner-img-box,
-.banner-ingfo-box {
+.banner-ingfo-box,
+.date-box {
   display: flex;
   justify-content: center;
   align-items: center;

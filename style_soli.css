@@ -1,117 +1,213 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
-
 * {
-    font-family: 'IBM Plex Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
+html,
 body {
-    background-color: #111;
+    position: relative;
+    height: 100%;
 }
 
-/*변경없음 */
-.main {
-    /* background-color: red; */
-    width: 1000px;
-    height: 600px;
+html {
+    scroll-behavior: smooth;
+}
 
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding-top: 100px;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40x;
+    padding: 1rem;
+    background: #fff;
+    font-weight: bold;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding-left: 20px;
-    margin: 20px auto 30px auto;
-
-    border: 1px solid coral;
 }
 
-.portrait {
-    /* background-color: #111; */
-    width: 400px;
+#header>a>h1 {
+    font-size: 20px;
+    color: black;
+}
+
+#scoll_move_box {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    margin-right: 18px;
+    padding-right: 20px;
+}
+
+
+#scoll_move_box>li>a {
+    text-decoration-line: none;
+    color: black;
+    padding-right: 30px;
+    /* 줄바뀜 방지 */
+    white-space: nowrap;
+}
+
+/* 스와이퍼 슬라이드 부분 */
+.swiper {
+    margin-top: 50px;
+    width: 800px;
     height: 500px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(./img2.jpg);
-    background-size: cover;
-    background-position: center;
-    filter: drop-shadow(1px 3px 5px #000);
-    border-radius: 50%;
-    margin-left: 10px;
 }
 
-.portrait:hover {
-    background-image: url(./img2.jpg);
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.profile {
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#div2 {
+    /* background-color: blue; */
+    width: 800px;
+    margin: 300px auto 0 auto;
+}
+
+#div2>h1 {
+    text-align: center;
+    line-height: 300%
+}
+
+#div2>h2 {
+    font-size: 20px;
+}
+
+#div2 p {
+    font-size: 18px;
+    margin-top: 20px;
+    line-height: 150%
+}
+
+#div3 {
+    width: 600px;
+    margin: 200px auto 20px auto;
+}
+
+#div3>img {
+    width: 300px;
+    margin-left: 150px;
+}
+
+#hashtags {
+    margin-top: 50px;
+    width: 600px;
+    height: 300px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 200%
+}
+
+#div3>#hashtags>p {
+    margin-top: 20px;
+    color: dodgerblue;
+}
+
+#div4 {
+    width: 1000px;
+    margin: 100px auto 100px auto;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    margin-left: 100px;
 }
 
-.profile_text {
-    color: whitesmoke;
-    margin-right: 50px;
-    font-size: x-large;
+#div4>div>h1 {
+    background-image: url("/collaboration.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 500px;
+    height: 380px;
+    text-align: center;
+    padding-top: 150px;
+    margin: 0 auto 0 auto;
+    font-size: 50px;
+    color: white;
 }
 
-.profile_text>div {
-    margin-bottom: 30px;
+#div4>div {
+    margin-right: 20px;
 }
 
-.profile_text>div>dt {
-    color: cornflowerblue;
-}
-
-.btn_about {
+#div4>#text {
+    font-size: 18px;
     display: flex;
     flex-direction: column;
-    margin-left: 50px;
-}
-
-.btn_about>button {
-    color: whitesmoke;
-    margin-bottom: 30px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    font-size: large;
-    background-color: transparent;
-}
-
-.modal {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: red;
-
-
+    line-height: 200%
 }
 
-.charater {
-    display: none;
-    transition: 0.8s;
-    background-color: transparent;
-    color: white;
-    font-size: x-large;
+#div5 {
+    text-align: center;
     width: 600px;
-    height: 300px;
-    margin: 0 auto 0 auto;
-    padding: 10px 20px;
-    border: 3px dotted white;
-    border-radius: 20px;
-    line-height: 1.5;
+    margin: 100px auto 20px auto;
 }
 
-
-.teamwork {
-    display: none;
-    background-color: transparent;
-    color: white;
-    font-size: x-large;
+.guestbook {
     width: 600px;
-    height: 270px;
-    margin: 0 auto 0 auto;
-    padding: 10px 20px;
-    border: 3px dotted white;
-    border-radius: 20px;
-    line-height: 1.5;
+    height: 250px;
+    padding: 20px;
+    border: 1px solid lightsteelblue;
+    margin-top: 20px;
+}
+
+.guestbook>button {
+    width: 100%;
+    text-align: center;
+}
+
+#wrap_cards {
+    width: 640px;
+    margin-left: 150px;
+
+}
+.card {
+    margin-bottom: 10px;
+}
+
+#move_top {
+    font-size: 20px;
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
+    text-decoration-line: none;
+    color: #000;
+}
+
+footer {
+    /* footer를 aside위에 올리기 위해 사용(부유객체) */
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    padding: 0 25px;
+    line-height: 60px;
+    color: #111;
+    border-top: 1px solid #dee5e7;
+    background-color: #fff;
 }

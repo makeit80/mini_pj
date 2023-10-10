@@ -68,7 +68,7 @@
         });
 
         $(".delete-btn").click(async function () {
-            let id = $(".card").attr("id");
+            let id = $(this).closest('.card').attr('id'); ;
             await deleteDoc(doc(db, "comments", id));
             alert('삭제 완료!');
             window.location.reload();

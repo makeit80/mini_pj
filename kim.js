@@ -3,9 +3,6 @@ import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase
 import { collection, addDoc, orderBy, query } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
 import { getDocs } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
 
-// import { initializeApp } from 'firebase/app';
-// import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
-
 const firebaseConfig = {
     apiKey: 'AIzaSyDeWVLLm0qIs9oDDEAazIFUh1u12F9Q23E',
     authDomain: 'sparta-30756.firebaseapp.com',
@@ -95,7 +92,6 @@ historyForm.addEventListener('submit', async (e) => {
 });
 
 const q = query(collection(db, 'history'), orderBy('timestamp', 'asc'));
-// let historydoc = await getDocs(collection(db, 'history'), orderBy('timestamp', 'asc'));
 const historydoc = await getDocs(q);
 let historydocIndex = 1;
 

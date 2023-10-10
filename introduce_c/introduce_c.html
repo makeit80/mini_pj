@@ -6,135 +6,224 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>천영륜</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link rel="icon" href="favicon.svg">
-  <link rel="stylesheet" href="style_c.css"/>
-
+  <link rel="stylesheet" href="style_c.css" />
 </head>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+  };
+
+  $("#postingbtn").click(async function () {
+    let name = $('#name').val();
+    let input = $('#input').val();
+
+    let doc = {
+      'name': name,
+      'input': input,
+      'timestamp': Date.now()
+    };
+
+    await addDoc(collection(db, "comments"), doc);
+    alert('글올리기 완료!');
+    window.location.reload();
+  })
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  let comments = [];
+
+  let datas = await getDocs(collection(db, "comments"));
+
+  datas.forEach((data) => {
+    comments.push(data.data());
+  });
+
+
+  comments.sort((a, b) => {
+    return b.timestamp - a.timestamp;
+  });
+
+  comments.forEach((comment) => {
+    const element = `
+            <div class="comment">
+              <div class="userinfo">
+                <div class="emoji6">
+                  <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="name">${comment.name}</div>
+              </div>
+              <div class="chat">${comment.input}</div>
+              <div class="date-box">
+              <div clas="date">${new Date(comment.timestamp).toLocaleString('ko-KR', { hour12: false, year: "numeric", month: "numeric", day: "numeric", hour: '2-digit', minute: "numeric" })}</div>
+              </div>
+              <div class="like">♥</div>
+            </div>
+            `
+    $("#comment-box").append(element)
+  })
+
+</script>
+
 <body>
-  <div class="container-fluid">
+  <header class="main-nav">
+    <div class="nav-item"><a href="../index.html">A-03조</a></div>
+    <div class="nav-item"><a href="../kim.html">김현철</a></div>
+    <div class="nav-item"><a href="../index_soli.html">박솔이</a></div>
+    <div class="nav-item"><a href="../team_l.html">이경욱</a></div>
+    <div class="nav-item"><a href="#">천영륜</a></div>
+  </header>
+  <div class="main-container">
     <div class="main" id="back">
-      <header class="d-flex justify-content-center py-5">
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="index.html" class="nav-link nav-font-color">A-03조</a></li>
-          <li class="nav-item"><a href="Kim.html" class="nav-link nav-font-color">김현철</a></li>
-          <li class="nav-item"><a href="index_soli.html" class="nav-link nav-font-color">박솔이</a></li>
-          <li class="nav-item"><a href="team_l.html" class="nav-link nav-font-color">이경욱</a></li>
-          <li class="nav-item"><a href="#" class="nav-link nav-font-color">천영륜</a></li>
-        </ul>
-      </header>
-      <div class="row justify-content-center">
-        <div class="col-5 d-flex align-items-center">
+      <div class="sub-container">
+        <div class="sub-container-left">
           <div class="box">
             <div class="headbox">
-              <div class="row justify-content-between text-center">
-                <div class="col-2">
-                  <i class="bi bi-instagram fs-1"></i>
-                </div>
-                <div class="col-2">
-                  <i class="bi bi-three-dots-vertical fs-1"></i>
-                </div>
+              <div class="emoji">
+                <i class="bi bi-instagram fs-1"></i>
+              </div>
+              <div class="emoji">
+                <i class="bi bi-three-dots-vertical fs-1"></i>
               </div>
             </div>
             <div class="imgbox"></div>
             <div class="bottombox">
-              <div class="row justify-content-between text-center">
-                <div class="col-5 row">
-                  <div class="col">
+              <div class="emojibox">
+                <div class="emoji">
+                  <div class="emoji2">
                     <i class="bi bi-heart-fill fs-2"></i>
                   </div>
-                  <div class="col">
+                  <div class="emoji2">
                     <i class="bi bi-chat-right fs-2"></i>
                   </div>
-                  <div class="col">
+                  <div class="emoji2">
                     <i class="bi bi-send fs-2"></i>
                   </div>
                 </div>
-                <div class="col-2">
-                  <i class="bi bi-bookmark fs-2"></i>
+                <div class="emoji">
+                  <i id="emoji3" class="bi bi-bookmark fs-2"></i>
                 </div>
               </div>
-              <div class="introduce fw-bold">#3기_React #A-3조 #천영륜
+              <div class="introduce">
+                #3기_React #frontend #A-03조 #천영륜
                 <br />
-                #ISFP #비전공자 #초보 # 잘부탁드립니다!
+                #ISFP #비전공자 #초보 #잘부탁드립니다!
               </div>
             </div>
           </div>
         </div>
-        <div class="col-5">
-          <div class="dm">
-            <div>
-              <div class="chat fw-bold">
-                Q. 객관적으로 살펴본 자신의 장점?
-              </div>
-            </div>
-            <div class="rtbox">
-              <div class="answer">
-                ISFP 유형으로 내향적이며
-                <br />
-                업무를 신중하게 처리하고 문제를 해결하기 위해 노력합니다.
-              </div>
-            </div>
-            <div>
-              <div class="chat fw-bold">
-                Q. 자신의 협업스타일?
-              </div>
-            </div>
-            <div class="rtbox">
-              <div class="answer">
-                협력과 조화 중심의 협업 스타일로,
-                <br />
-                다양한 시각을 존중하고 팀의 조화와 성과 향상을 목표로 합니다.
-              </div>
-            </div>
-            <div>
-              <div class="chat fw-bold">
-                Q. 자신에 대한 설명?
-              </div>
-            </div>
-            <div class="rtbox">
-              <div id="bottomas" class="answer">
-                책임감과 신뢰성 : 항상 최선을 다하고, 필요할 때 지원해 주며,
-                <br />
-                언제나 믿을 수 있는 동료나 친구로서 존재하고자 노력합니다.
-              </div>
-            </div>
-            <div class="sendbox">
-              <div class="row justify-content-between text-center">
-                <div class="col-2">
-                  <i class="bi bi-camera fs-2"></i>
+        <div class="sub-container-right">
+          <div class="box">
+            <div class="dm">
+              <div class="q-box">
+                <div class="question">
+                  Q.[자신]에 대한 설명 및 MBTI ?
                 </div>
-                <div class="col fs-4 fst-italic text-start d-flex align-items-center sendmsg">메시지...</div>
-                <div class="col-5 row">
-                  <div class="col">
-                    <i class="bi bi bi-mic fs-2"></i>
+              </div>
+              <div class="a-box">
+                <div class="answer">
+                  A. ISFP 유형으로 내향적이며
+                  <br />
+                  업무를 신중하게 처리하고 문제를 해결하기 위해 노력합니다.
+                </div>
+              </div>
+              <div class="q-box">
+                <div class="question">
+                  Q. 자신의 협업스타일?
+                </div>
+              </div>
+              <div class="a-box">
+                <div class="answer">
+                  A. 협력과 조화 중심의 협업 스타일로,
+                  <br />
+                  다양한 시각을 존중하고 팀의 조화와 성과 향상을 목표로 합니다.
+                </div>
+              </div>
+              <div class="q-box">
+                <div class="question">
+                  Q. 자신에 대한 설명?
+                </div>
+              </div>
+              <div class="a-box">
+                <div class="answer">
+                  책임감과 신뢰성 : 항상 최선을 다하고, 필요할 때 지원해 주며,
+                  <br />
+                  언제나 믿을 수 있는 동료나 친구로서 존재하고자 노력합니다.
+                </div>
+              </div>
+              <div class="msgbox">
+                <div class="msg">
+                  <div class="emoji4">
+                    <i class="bi bi-camera fs-2"></i>
                   </div>
-                  <div class="col">
-                    <i class="bi bi-image fs-2"></i>
-                  </div>
-                  <div class="col">
-                    <i class="bi-emoji-smile fs-2"></i>
+                  <div class="message"> 메시지...</div>
+                  <div class="emoji">
+                    <div class="emoji5">
+                      <i class="bi bi bi-mic fs-2"></i>
+                    </div>
+                    <div class="emoji5">
+                      <i class="bi bi-image fs-2"></i>
+                    </div>
+                    <div class="emoji5">
+                      <i class="bi-emoji-smile fs-2"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <footer>
-          <div class="container">
-            <div class="chatting">
-            </div>
-            <div class="write">
-              <button> 확인 </button>
-            </div>
-           
+      </div>
+      <div class="container-bottom">
+        <div class="guestbook-box">
+          <div id="comment-box" class="gb-box">
+            <!-- <div class="comment">
+              <div class="userinfo">
+                <div class="emoji6">
+                  <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="name">name</div>
+              </div>
+              <div class="chat">방명록 작성 test</div>
+              <div class="datebox">
+              <div clas="date"> </div>
+              </div>
+              <div class="like">♥</div>
+            </div> -->
           </div>
-        </footer>
+          <div class="send-box">
+            <div class="emoji6">
+              <i class="bi bi-person-circle"></i>
+            </div>
+            <input id="name" class="input-name" type="text" placeholder="이름" />
+            <input id="input" class="input-box" type="text" placeholder="여기에 적으세요." />
+            <button id="postingbtn" type="button" class="send-button">작성하기</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <footer>
+    <div class="footer-container">
+      <div class="banner">
+        <div class="banner-img-box">
+          <img class="banner-img" src="sparta.png">
+        </div>
+        <div class="banner-ingfo-box">
+          <p class="text1">
+            내일배움캠프
+          </p>
+          <p class="text2">
+            11월 모집 예정
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
-
-</html>

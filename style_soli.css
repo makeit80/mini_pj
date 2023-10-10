@@ -138,7 +138,7 @@ body {
 }
 
 #div4>div>h1 {
-    background-image: url("/collaboration.jpg");
+    background-image: url("collaboration.jpg");
     background-position: center;
     background-size: cover;
     width: 500px;

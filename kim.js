@@ -1,7 +1,10 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
-import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+import { collection, addDoc, orderBy, query } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
 import { getDocs } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+
+// import { initializeApp } from 'firebase/app';
+// import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyDeWVLLm0qIs9oDDEAazIFUh1u12F9Q23E',
@@ -74,14 +77,16 @@ toggleHistory.addEventListener('click', () => {
 
 historyForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (userName === undefined) {
-        userName = prompt('닉네임을 입력해주세요');
-        console.log(userName);
+    userName = prompt('닉네임을 입력해주세요');
+    if (userName === undefined || userName === null || userName.trim() === '') {
+        alert('닉네임을 입력해주세요!!!');
+        return;
     }
     const value = historyInput.value;
     let doc = {
         userName,
         value,
+        timestamp: new Date(),
     };
     await addDoc(collection(db, 'history'), doc);
 
@@ -89,16 +94,15 @@ historyForm.addEventListener('submit', async (e) => {
     window.location.reload();
 });
 
-let historydoc = await getDocs(collection(db, 'history'));
+const q = query(collection(db, 'history'), orderBy('timestamp', 'asc'));
+// let historydoc = await getDocs(collection(db, 'history'), orderBy('timestamp', 'asc'));
+const historydoc = await getDocs(q);
 let historydocIndex = 1;
-console.log(historydoc);
 
 historydoc.forEach((doc) => {
     let data = doc.data();
     let ownClass = historydocIndex % 2 === 0 ? 'own' : '';
     const { userName, value } = data;
-    console.log(value);
-    console.log(historydocIndex);
     historydocIndex++;
 
     let temp_html = `

@@ -4,64 +4,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style_soli.css">
-    <title>Soli Park</title>
-    <script>
-        function open_character() {
-            $('#charater_content').toggle();
-        }
-        function open_teamwork() {
-            $('#teamwork_content').toggle();
+    <title>Document</title>
+    <link rel="stylesheet" href="style_Soli.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase 구성 정보 설정
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDBBK3TtcA3QDJsCFnuYWBfIwUpKhdXUBA",
+            authDomain: "sparta-94cc1.firebaseapp.com",
+            projectId: "sparta-94cc1",
+            storageBucket: "sparta-94cc1.appspot.com",
+            messagingSenderId: "167155166663",
+            appId: "1:167155166663:web:736361a294232365d2bde2",
+            measurementId: "G-HWRHWVLHG0"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $("#makeCard").click(async function () {
+            let writer = $('#writer').val();
+            let comment = $('#comment').val();
+
+            let doc = {
+                'writer': writer,
+                'comment': comment
+            };
+            await addDoc(collection(db, "guestbook"), doc);
+            alert('저장 완료!');
+            window.location.reload();
+        });
+
+        let docs = await getDocs(collection(db, "guestbook"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+
+            let writer = row['writer']
+            let comment = row['comment']
+            let temp_html = `
+                            <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${writer}</h5>
+                                    <p class="card-text">${comment}</p>
+                                </div>
+                            </div>`
+            $('#wrap_cards').append(temp_html);
+        });
+
+        function makeCard() {
+            let writer = $('#writer').val();
+            let comment = $('#comment').val();
+            let temp_html = `
+                            <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${writer}</h5>
+                                    <p class="card-text">${comment}</p>
+                                </div>
+                            </div>`
+            $('#wrap_cards').append(temp_html);
         }
 
+
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 500) {
+                    $('#move_top').fadeIn();
+                } else {
+                    $('#move_top').fadeOut();
+                }
+            });
+
+            $("#move_top").click(function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 400);
+                return false;
+            });
+        });
     </script>
 
 </head>
 
 <body>
-    <div class="main">
-        <div class="portrait"></div>
-        <div class="profile">
-            <dl class="profile_text">
-                <div>
-                    <dt>이름</dt>
-                    <dd>박솔이</dd>
-                </div>
-                <div>
-                    <dt>거주지</dt>
-                    <dd>통영</dd>
-                </div>
-                <div>
-                    <dt>MBTI</dt>
-                    <dd>INFJ(옹호자)</dd>
-                </div>
-            </dl>
+    <div id="header">
+        <a href="index.html" style="text-decoration: none;">
+            <h1>TEAM 아이들</h1>
+        </a>
+        <ul id="scoll_move_box">
+            <li><a href="#div1" id="scroll_move1">Mini Album</a></li>
+            <li><a href="#div2" id="scroll_move2">Charecter</a></li>
+            <li><a href="#div3" id="scroll_move3">MBTI</a></li>
+            <li><a href="#div4" id="scroll_move4">Collaboration Style</a></li>
+            <li><a href="#div5" id="scroll_move4">Guest Book</a></li>
+        </ul>
+    </div>
 
-            <div class="btn_about">
-                <button onclick="open_character()" type="button">성격</button>
-                <button onclick="open_teamwork()" type="button">협업스타일</button>
+    <div class="container">
+        <!-- Swiper -->
+        <div id="div1" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Haeundae, Busan<img src="/slide_img1.jpg" alt=""></div>
+                <div class="swiper-slide">Haeundae, Busan<img src="/slide_img2.jpg" alt=""></div>
+                <div class="swiper-slide">Mt. Mireuksan in Tongyeong<img src="/slide_img3.jpg" alt=""></div>
+                <div class="swiper-slide">Crater Lake in Oregon, USA<img src="/slide_img4.jpg" alt=""></div>
+                <div class="swiper-slide">San Francisco, California<img src="/slide_img5.jpg" alt=""></div>
+                <div class="swiper-slide">Redwood National Park, California<img src="/slide_img7.jpg" alt=""></div>
+                <div class="swiper-slide">A beach on the way home from Redwood National Park<img src="/slide_img6.jpg"
+                        alt=""></div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div id="div2">
+            <h1>"안녕하세요, 박솔이입니다."</h1>
+            <br />
+            <h2>관심사와 열정</h2>
+            <p>저는 다양한 예술적 표현을 통해 감정을 나타내고 상상력을 자극하는 것을 사랑합니다. 이를 통해 다양한 이야기를 경험하며 새로운 시각을 얻는 것을 즐깁니다. 항상 새로운 것을 배우고
+                탐구하고자 노력하며, 지식과 기술을 확장하는 데 큰 흥미를 느낍니다. 애매모호한 상황보다는 명확한 해결책을 선호합니다.</p>
+            <br />
+            <h2>감정과 인간관계</h2>
+            <p>깊은 인간관계를 추구하며, 사람들과의 연결을 중요하게 생각합니다. 공감 능력이 뛰어나서 다른 사람의 감정을 이해하고 공감하는 데 자주 노력합니다. 하지만 때로는 너무 많은 생각과 걱정을
+                하기도 합니다. 자기반성적인 성향 덕분에 자신의 감정과 생각을 깊게 탐구합니다.</p>
+            <br />
+            <h2>집중력</h2>
+            <p>집중력이 높습니다. 어떤 일에 몰입할 때 깊은 경험을 즐기며 열정적으로 추진합니다. 하지만 가끔 초반에 힘을 빼는 경향이 있어, 이를 극복하려고 노력하고 있습니다.</p>
+        </div>
+
+        <div id="div3">
+            <img src="/infj_hash.png" alt="mbti_img">
+            <div id="hashtags">
+                <h1>나의 MBTI 유형 키워드 #INFJ</h1>
+                <p> #옹호자 #INFJ #이상주의 #원칙주의 #자아실현 #깊은생각 #사명의식 #양심적 #진실한소통 #공감능력 #창의력 #정의추구 #불평등해소 #미래를위한희망 #소수의친밀한관계
+                    #열정과이성의균형 #비판과성장 #자기관리 #진정한가치 #성장과발전 #영감과통찰력</p>
             </div>
         </div>
-    </div>
-    <div class="btnContents">
-        <div id="charater_content" class="charater">
-            <ul>
-                <li>다른 사람들의 감정이나 주변의 변화를 민감하게 느끼고 자기반성적인 편</li>
-                <li>공감능력이 뛰어나고 이것 저것 보다가 잘 움.</li>
-                <li>어디 꽂히면 굉장히 몰두함.</li>
-                <li>여러가지 알바를 많이 했는데, 뭐든 할 때마다 그냥 한 일은 없음. 하다보면 궁금한 것들이 많아서 누가 시키지 않아도 혼자 공부함.</li>
-            </ul>
+
+        <div id="div4">
+            <div>
+                <h1>협업 스타일</h1>
+            </div>
+            <div id="text">
+                <p>1. 학습과 지식 공유를 통한 개선을 추구하는 학습 중심의 스타일.</p>
+                <p>2. 자기반성과 목표 지향성으로 목표를 주의깊게 관찰하며 효율적인 작업을 추구하는 성향.</p>
+                <p>3. 뛰어난 집중력과 몰입력으로 결과물을 꾸준히 향상시키는 협업자.</p>
+                <p>4. 감정을 이해하고 공감하는 협업자.</p>
+                <p>5. 협력과 지원을 통해 팀원들과 원활한 소통을 유지하는 협력 중심의 스타일.</p>
+            </div>
         </div>
-        <div id="teamwork_content" class="teamwork">
-            <ul>
-                <li>훌륭한 팀원이 많은 것 보다, 서로에 대한 신뢰를 바탕으로 자신의 생각을 솔직하게 말할 수 있는 환경을 만드는 것을 더 중요하게 생각하여 그러고자 노력함</li>
-                <li>의견을 많이 들으려고 함.</li>
-                <li>좋은 아이디어가 있으면 적극 수용하는 편</li>
-                <li>또한 나의 아이디어도 적극적으로 나눔</li>
-            </ul>
+        <div id="div5">
+            <h1>방명록</h1>
+            <div id="postingbox" class="guestbook">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="writer" placeholder="작성자">
+                    <label for="floatingInput">작성자</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="comment" placeholder="이 곳에 한마디를 남겨주세요!">
+                    <label for="floatingInput">이 곳에 한마디를 남겨주세요!</label>
+                </div>
+                <button id="makeCard" type="button" class="btn btn-dark">방명록 남기기</button>
+            </div>
         </div>
+        <div id="wrap_cards">
+            <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
+                <div class="card-body">
+                    <h5 class="card-title">행인1</h5>
+                    <p class="card-text">파이팅 하세요~</p>
+                </div>
+            </div>
+        </div>
+
+        <a id="move_top" href="#">TOP</a>
     </div>
+    <footer></footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            rewind: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </body>
 
 </html>

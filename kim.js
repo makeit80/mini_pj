@@ -94,7 +94,9 @@ historyForm.addEventListener('submit', async (e) => {
     window.location.reload();
 });
 
-let historydoc = await getDocs(collection(db, 'history'), orderBy('timestamp', 'asc'));
+const q = query(collection(db, 'history'), orderBy('timestamp', 'asc'));
+// let historydoc = await getDocs(collection(db, 'history'), orderBy('timestamp', 'asc'));
+const historydoc = await getDocs(q);
 let historydocIndex = 1;
 
 historydoc.forEach((doc) => {

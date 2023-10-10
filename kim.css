@@ -127,7 +127,9 @@ table {
 /* 공통 */
 * {
     font-family: 'Gowun Dodum', sans-serif;
+    box-sizing: border-box;
 }
+
 .hide,
 .hide * {
     position: absolute;
@@ -151,6 +153,11 @@ header {
     padding: 10px 20px;
     background-color: #abc1d1;
     z-index: 2;
+}
+
+/* container */
+main {
+    overflow: hidden;
 }
 
 /* 드롭다운 */
@@ -177,9 +184,13 @@ header {
 }
 
 /* 채팅 */
+.chat {
+    width: 100%;
+}
 
-main {
-    min-height: calc(100vh - 205px);
+.chat__main {
+    min-height: calc(100vh - 165px);
+    padding: 0 20px;
 }
 
 .warning {
@@ -240,6 +251,58 @@ main {
     flex-direction: row-reverse;
 }
 
+/* toggleHistory */
+.toggleHistory {
+    position: fixed;
+    right: 16px;
+    bottom: 54px;
+    background-color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.5s linear;
+}
+.toggleHistory:hover {
+    background-color: #fae100;
+    outline: 1px solid black;
+}
+
+/* history */
+#history {
+    /* min-height: 100vh; */
+    top: 0;
+    left: 0;
+    background-color: #fae100;
+    right: 0;
+    position: fixed;
+    z-index: 2;
+    transform: translateY(-100%);
+    transition: all linear 0.5s;
+}
+
+.history__chat {
+    padding: 40px;
+    min-height: calc(100vh - 50px);
+    /* display: flex;
+    flex-direction: column; */
+}
+#history * {
+    opacity: 0;
+    transition: all linear 0.5s;
+}
+
+#history.active {
+    transform: translateY(0);
+    background-color: #abc1d1;
+}
+#history.active * {
+    opacity: 1;
+}
+
 /* 애니메이션 */
 @keyframes fadein {
     from {
@@ -252,6 +315,6 @@ main {
     }
 }
 
-.massage div {
+.massage * {
     animation: fadein 0.5s linear;
 }

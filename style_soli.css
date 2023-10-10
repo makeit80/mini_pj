@@ -162,6 +162,30 @@ body {
     line-height: 200%
 }
 
+#wrap_link {
+    width: 400px;
+    margin: 150px auto 150px auto;
+    
+}
+
+#blog_link {
+    width: 400px;
+    height: 80px;
+    background-color: #047c74;
+    color: #fff;
+    font-size: 22px;
+    border: 1px solid #047c78;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+#blog_link:hover {
+    background-color: #022d2b;
+    color: white;
+    border: 1px solid #111;
+}
+
+
 #div5 {
     text-align: center;
     width: 600px;

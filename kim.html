@@ -124,6 +124,19 @@
                                                 업무 스타일은?
                                             </button>
                                             <button
+                                                onclick="window.open('https://velog.io/@peechulchul') "
+                                                class="btn-q"
+                                                style="
+                                                    cursor: pointer;
+                                                    background-color: white;
+                                                    font-size: 15px;
+                                                    padding: 15px 20px;
+                                                    border-radius: 8px;
+                                                "
+                                            >
+                                                블로그 있어요?
+                                            </button>
+                                            <button
                                                 onclick="location.href='./' "
                                                 class="btn-q"
                                                 style="
@@ -209,11 +222,21 @@
                 </section>
 
                 <aside class="toggleHistory">
-                    <img src="secrets.svg" width="30" height="30" alt="transform-nav" />
+                    <img src="pencil.svg" width="30" height="30" alt="transform-nav" />
                 </aside>
 
                 <section id="history">
-                    <div class="history__chat"></div>
+                    <div class="history__chat">
+                        <div class="massage own">
+                            <img class="profileImg" />
+                            <div class="massageContent">
+                                <span class="massageAuthor">김현철</span>
+                                <div class="messageInfo">
+                                    <span class="massageBubble">방문해주셔서 감사합니다!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <form
                         class="history__form"
                         style="
@@ -224,15 +247,16 @@
                             background-color: white;
                             width: 100%;
                             height: 50px;
-                            padding: 0px 100px;
+                            padding: 5px 100px;
                         "
                     >
                         <input class="history__input" style="flex: 1" />
-                        <button>전송</button>
+                        <button style="background-color: #fae100; border-radius: 4px">전송</button>
                     </form>
                 </section>
             </div>
         </main>
+
         <script type="module" src="kim.js"></script>
     </body>
 </html>

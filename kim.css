@@ -278,9 +278,11 @@ main {
     background-color: #fae100;
     right: 0;
     position: fixed;
+    height: 100vh;
     z-index: 2;
     transform: translateY(-100%);
     transition: all linear 0.5s;
+    overflow-y: auto;
 }
 
 .history__chat {

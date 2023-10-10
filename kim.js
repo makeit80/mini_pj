@@ -74,9 +74,9 @@ toggleHistory.addEventListener('click', () => {
 
 historyForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (userName === undefined) {
+    if (userName === undefined || userName === null) {
         userName = prompt('닉네임을 입력해주세요');
-        console.log(userName);
+        return;
     }
     const value = historyInput.value;
     let doc = {

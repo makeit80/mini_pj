@@ -273,7 +273,6 @@ main {
 
 /* history */
 #history {
-    /* min-height: 100vh; */
     top: 0;
     left: 0;
     background-color: #fae100;
@@ -287,8 +286,6 @@ main {
 .history__chat {
     padding: 40px;
     min-height: calc(100vh - 50px);
-    /* display: flex;
-    flex-direction: column; */
 }
 #history * {
     opacity: 0;

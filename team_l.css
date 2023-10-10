@@ -158,7 +158,7 @@ width: 97.5%;
     border: 1px solid #aaaaaa;
     border-radius: 7.5px;
     color: #666;
-    cursor: grab;
+    cursor: pointer;
     transition: 0.5s;
 
     padding: 5px;

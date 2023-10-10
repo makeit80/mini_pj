@@ -68,7 +68,7 @@
         });
 
         $(".delete-btn").click(async function () {
-            let id = $(this).closest('.card').attr('id');
+            let id = $(".card").attr("id");
             await deleteDoc(doc(db, "comments", id));
             alert('삭제 완료!');
             window.location.reload();
@@ -89,6 +89,7 @@
                 return false;
             });
         });
+        
     </script>
 
 </head>
@@ -161,6 +162,14 @@
                 <p>5. 협력과 지원을 통해 팀원들과 원활한 소통을 유지하는 협력 중심의 스타일.</p>
             </div>
         </div>
+
+        <div id="wrap_link">
+            <a href="https://soliweekly.tistory.com/">
+                <button id="blog_link">블로그 방문하기</button>
+            </a>
+        </div>
+
+        
         <div id="div5">
             <h1>방명록</h1>
             <div id="postingbox" class="guestbook">

@@ -68,7 +68,7 @@
         });
 
         $(".delete-btn").click(async function () {
-            let id = $(".card").attr("id");
+            let id = $(this).closest('.card').attr('id'); ;
             await deleteDoc(doc(db, "comments", id));
             alert('삭제 완료!');
             window.location.reload();
@@ -112,8 +112,8 @@
         <!-- Swiper -->
         <div id="div1" class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">Haeundae, Busan<img src="slide_img1.JPG" alt=""></div>
-                <div class="swiper-slide">Haeundae, Busan<img src="slide_img2.JPG" alt=""></div>
+                <div class="swiper-slide">Haeundae, Busan<img src="slide_img1.jpg" alt=""></div>
+                <div class="swiper-slide">Haeundae, Busan<img src="slide_img2.jpg" alt=""></div>
                 <div class="swiper-slide">Mt. Mireuksan in Tongyeong<img src="slide_img3.jpg" alt=""></div>
                 <div class="swiper-slide">Crater Lake in Oregon, USA<img src="slide_img4.jpg" alt=""></div>
                 <div class="swiper-slide">San Francisco, California<img src="slide_img5.jpg" alt=""></div>
